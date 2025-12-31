@@ -1,0 +1,184 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello Ankita</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background: linear-gradient(to bottom, #ffb6c1, #ffe4e1); /* Light pink gradient */
+                color: #d63384;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .landing {
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                height: 100%;
+            }
+            h1 {
+                font-size: 3em;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .photos {
+                position: absolute;
+                top: 30%;
+                left: 0;
+                width: 100%;
+                height: 50%;
+                pointer-events: none;
+            }
+            .photos img {
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        border: 5px solid #ff69b4;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        object-fit: cover;
+        animation: revolve 9s linear infinite, floatIn 4s ease-out;
+    }
+
+            .photos img.circle {
+        border-radius: 70%;
+        object-fit: contain;
+        object-position: center;
+        background-color: #fff;
+    }
+
+            .photos img.square {
+                border-radius: 15px; /* Slight rounding for cuteness */
+            }
+            /* Position photos in a scattered, non-centered layout for wow effect */
+            .photos img:nth-child(1) {
+                top: 10%;
+                left: 10%;
+            }
+            .photos img:nth-child(2) {
+                top: 20%;
+                right: 15%;
+            }
+            .photos img:nth-child(3) {
+                bottom: 10%;
+                left: 20%;
+            }
+            @keyframes revolve {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            @keyframes floatIn {
+                from { transform: scale(0) rotate(0deg); opacity: 0; }
+                to { transform: scale(1) rotate(0deg); opacity: 1; }
+            }
+            button {
+                background: #ff69b4;
+                color: white;
+                border: none;
+                padding: 15px 30px;
+                font-size: 1.2em;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: background 0.3s;
+                position: absolute;
+                bottom: 10%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            button:hover {
+                background: #ff1493;
+            }
+            .animations {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1;
+            }
+            .heart {
+                position: absolute;
+                font-size: 2em;
+                color: #ff69b4;
+                animation: float 4s infinite ease-in-out;
+            }
+            .flower {
+                position: absolute;
+                font-size: 2.5em;
+                color: #ff6347; /* Tomato color for flowers */
+                animation: float 5s infinite ease-in-out;
+            }
+            .teddy {
+                position: absolute;
+                font-size: 3em;
+                color: #8b4513; /* Brown for teddy */
+                animation: bounce 3s infinite ease-in-out;
+            }
+            @keyframes float {
+                0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+                50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+            }
+            @keyframes bounce {
+                0%, 100% { transform: translateY(0) scale(1); }
+                50% { transform: translateY(-50px) scale(1.1); }
+            }
+        </style>
+    </head>
+    <body>
+        <audio autoplay loop muted id="bgMusic">
+        <source src="Tumse Behtar Song Whatsapp Status _ Arijit Singh _ Black Screen Status _ Lyrics Status _ New Song.mp3" type="audio/mpeg">
+    </audio>
+        <div class="animations" id="animations"></div>
+        <div class="landing">
+            <h1>Hello, Ankita!</h1>
+            <div class="photos">
+                <!-- Replace 'photo1.jpg', 'photo2.jpg', etc., with your actual photo file names or URLs -->
+                <!-- For local files, place them in the same folder as this HTML file -->
+                <!-- For online, use full URLs like 'https://example.com/photo1.jpg' -->
+                <img src="IMG-20250618-WA0019.jpg" alt="Ankita Photo 1" class="circle">
+                <img src="IMG-20250621-WA0017.jpg" alt="Ankita Photo 2" class="square">
+                <img src="IMG-20250926-WA0005.jpg" alt="Ankita Photo 3" class="circle">
+            </div>
+            <button onclick="window.location.href='page1.html'">Click to Continue</button> <!-- Changed to page2.html assuming that's the next page -->
+        </div>
+
+        <script>
+            // Floating hearts, flowers, and teddy animation
+            function createElement(type) {
+                const element = document.createElement('div');
+                element.className = type;
+                if (type === 'heart') element.innerHTML = '❤️';
+                else if (type === 'flower') element.innerHTML = '🌸';
+                else if (type === 'teddy') element.innerHTML = '🧸'; // Teddy bear emoji
+                element.style.left = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 5 + 's';
+                document.getElementById('animations').appendChild(element);
+                setTimeout(() => element.remove(), 5000);
+            }
+            setInterval(() => createElement('heart'), 800);
+            setInterval(() => createElement('flower'), 1200);
+            setInterval(() => createElement('teddy'), 1500); // Teddy appears less frequently for cuteness
+            window.addEventListener("load", () => {
+            const music = document.getElementById("bgMusic");
+            music.muted = false;
+            music.volume = 0.3;
+            music.play().catch(() => {
+                console.log("Autoplay blocked by browser");
+            });
+        });
+        </script>
+    </body>
+
+    </html>
