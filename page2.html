@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026, Ankita!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffb6c1, #ffe4e1, #ff69b4, #ff1493); /* Vibrant pink gradient theme */
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+        h1 {
+            font-size: 5em;
+            margin: 0;
+            text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493, 0 0 60px #ffb6c1;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        .subtitle {
+            font-size: 2em;
+            margin: 20px 0;
+            animation: fadeIn 3s ease-in-out;
+        }
+        .fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #ff69b4, #ff1493, #ffb6c1);
+            border-radius: 50%;
+            animation: explode 2s infinite ease-in-out;
+        }
+        .firework:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+        .firework:nth-child(even) {
+            animation-delay: 1s;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493, 0 0 60px #ffb6c1; }
+            to { text-shadow: 0 0 30px #ff69b4, 0 0 50px #ff1493, 0 0 80px #ffb6c1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes explode {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.5) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            animation: fall 5s linear infinite;
+        }
+        .confetti-piece:nth-child(2n) { background: #ff1493; animation-delay: 1s; }
+        .confetti-piece:nth-child(3n) { background: #ffb6c1; animation-delay: 2s; }
+        .confetti-piece:nth-child(4n) { background: #ff6347; animation-delay: 3s; }
+        @keyframes fall {
+            from { transform: translateY(-100vh) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        .heart {
+            position: absolute;
+            font-size: 2.5em;
+            color: #ff69b4;
+            animation: float 5s infinite ease-in-out;
+            opacity: 0.8;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-150px) rotate(180deg); opacity: 1; }
+        }
+        button {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: #fff;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 20px;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            animation: bounceIn 2s ease-out 1s both;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #ff1493, #dc143c);
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
+        }
+        .bouquet-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 182, 193, 0.98);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            flex-direction: column;
+            animation: fadeIn 1s ease-out;
+        }
+        .bouquet {
+            font-size: 6em;
+            animation: bloom 3s ease-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .bouquet-flower {
+            display: inline-block;
+            margin: 15px;
+            animation: floatUp 4s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+        .bouquet-flower:hover {
+            transform: scale(1.2);
+        }
+        @keyframes bloom {
+            from { transform: scale(0) rotate(0deg); opacity: 0; }
+            to { transform: scale(1) rotate(360deg); opacity: 1; }
+        }
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(255, 105, 180, 0.3);
+        }
+        .close-button:hover {
+            background: linear-gradient(45deg, #ff1493, #dc143c);
+            transform: scale(1.05);
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+      <audio autoplay loop muted id="bgMusic">
+        <source src="Tumse Behtar Song Whatsapp Status _ Arijit Singh _ Black Screen Status _ Lyrics Status _ New Song.mp3" type="audio/mpeg">
+    </audio>
+    <div class="fireworks">
+        <!-- Fireworks elements -->
+        <div class="firework" style="top: 20%; left: 20%;"></div>
+        <div class="firework" style="top: 30%; left: 70%;"></div>
+        <div class="firework" style="top: 50%; left: 50%;"></div>
+        <div class="firework" style="top: 70%; left: 30%;"></div>
+        <div class="firework" style="top: 80%; left: 80%;"></div>
+    </div>
+    <div class="confetti">
+        <!-- Confetti pieces -->
+        <div class="confetti-piece" style="left: 10%; animation-duration: 4s;"></div>
+        <div class="confetti-piece" style="left: 20%; animation-duration: 5s;"></div>
+        <div class="confetti-piece" style="left: 30%; animation-duration: 6s;"></div>
+        <div class="confetti-piece" style="left: 40%; animation-duration: 4.5s;"></div>
+        <div class="confetti-piece" style="left: 50%; animation-duration: 5.5s;"></div>
+        <div class="confetti-piece" style="left: 60%; animation-duration: 6.5s;"></div>
+        <div class="confetti-piece" style="left: 70%; animation-duration: 4.2s;"></div>
+        <div class="confetti-piece" style="left: 80%; animation-duration: 5.8s;"></div>
+        <div class="confetti-piece" style="left: 90%; animation-duration: 6.2s;"></div>
+    </div>
+    <div class="hearts" id="hearts"></div>
+    <h1>Happy New Year 2026, Ankita!</h1>
+    <div class="subtitle">Welcome to a fresh start, full of joy and possibilities! 🎉✨</div>
+    <button onclick="window.location.href='page3.html'">Click for a Surprise!</button>
+    <div class="bouquet-overlay" id="bouquetOverlay">
+        <button class="close-button" onclick="hideBouquet()">Next Page</button>
+        <div class="bouquet">
+            <span class="bouquet-flower">🌹</span>
+            <span class="bouquet-flower">🌷</span>
+            <span class="bouquet-flower">🌸</span>
+            <span class="bouquet-flower">🌺</span>
+            <span class="bouquet-flower">💐</span>
+            <span class="bouquet-flower">🌻</span>
+        </div>
+        <p style="font-size: 2.5em; color: #d63384; margin-top: 30px; text-shadow: 2px 2px 4px rgba(255,255,255,0.5);">A beautiful bouquet just for you, Ankita! 💖✨</p>
+    </div>
+
+    <script>
+        // Floating hearts animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 800);
+
+        // Show bouquet overlay
+        function showBouquet() {
+            document.getElementById('bouquetOverlay').style.display = 'flex';
+        }
+
+        // Hide bouquet overlay
+        function hideBouquet() {
+            document.getElementById('bouquetOverlay').style.display = 'none';
+        }
+
+        window.addEventListener("load", () => {
+    const music = document.getElementById("bgMusic");
+    music.muted = false;
+    music.volume = 0.3;
+    music.play().catch(() => {
+        console.log("Autoplay blocked by browser");
+    });
+});
+
+    </script>
+</body>
+
+</html>
